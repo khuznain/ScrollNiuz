@@ -2,7 +2,7 @@ import * as React from 'react';
 import {ThemeProvider} from '@shopify/restyle';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import {Login, Register} from './src/authentication';
+import {Login, Register, CreateProfile} from './src/authentication';
 import {theme} from './src/components';
 import {Routes} from './src/navigation';
 
@@ -12,7 +12,7 @@ const AuthenticationNavigator = () => {
   return (
     <AuthenticationStack.Navigator
       headerMode="none"
-      initialRouteName="Register"
+      initialRouteName="CreateProfile"
       screenOptions={{
         cardStyle: {
           backgroundColor: '#fff',
@@ -20,6 +20,10 @@ const AuthenticationNavigator = () => {
       }}>
       <AuthenticationStack.Screen name="Login" component={Login} />
       <AuthenticationStack.Screen name="Register" component={Register} />
+      <AuthenticationStack.Screen
+        name="CreateProfile"
+        component={CreateProfile}
+      />
     </AuthenticationStack.Navigator>
   );
 };

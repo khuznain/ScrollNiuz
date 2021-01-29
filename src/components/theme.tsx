@@ -7,6 +7,7 @@ const theme = createTheme({
     body: '#9C9C9C',
     bodyLight: '#AAAAA9',
     grey: '#F4F0EF',
+    grey2: '#EFEFEF',
     danger: '#FF0058',
     darkGrey: '#8A8D90',
     shadow: '#00000029',
@@ -25,7 +26,7 @@ const theme = createTheme({
     s: 4,
     m: 10,
     l: 25,
-    xl: 75,
+    xl: 150,
   },
   textVariants: {
     header: {
