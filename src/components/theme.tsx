@@ -13,6 +13,7 @@ const theme = createTheme({
     shadow: '#00000029',
     borderBlack: '#4A4A48',
     shadow2: '#00000029',
+    teamCard: '#FCFCFC',
     black: '#171717',
     white: '#fff',
   },

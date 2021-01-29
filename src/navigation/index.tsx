@@ -13,4 +13,5 @@ export type Routes = {
   Login: undefined;
   Register: undefined;
   CreateProfile: undefined;
+  SelectTeam: undefined;
 };
