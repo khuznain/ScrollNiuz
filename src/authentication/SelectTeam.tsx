@@ -1,12 +1,14 @@
-import React from 'react';
-import {Image, StyleSheet, TouchableOpacity} from 'react-native';
-import {FlatList} from 'react-native-gesture-handler';
+import React, {useState, useCallback} from 'react';
+import {FlatList, TouchableOpacity, Image, StyleSheet} from 'react-native';
+import Feather from 'react-native-vector-icons/Feather';
+import {useTheme} from '@shopify/restyle';
 
-import {Box, Text, PrimaryWrapper, Button, RadioButton} from '../components';
+import {Box, Text, PrimaryWrapper, Button} from '../components';
 import {Routes, StackNavigationProps} from '../navigation';
-import {USER} from '../utils/assets';
-import {TEAM_DATA} from '../utils/data';
 import {flatListDataFormate} from '../utils/utils';
+import {TEAM_DATA} from '../utils/data';
+import {USER} from '../utils/assets';
+import {Theme} from '../components/theme';
 
 const Header = () => (
   <Box bg="primary" paddingHorizontal="m">
@@ -31,10 +33,12 @@ const Header = () => (
 
 interface TeamCardType {
   name: string;
+  isSelected: boolean;
   logo: string;
 }
 
-const TeamCard = ({logo, name}: TeamCardType) => {
+const TeamCard = ({logo, name, isSelected}: TeamCardType) => {
+  const theme = useTheme<Theme>();
   return (
     <Box
       flex={1}
@@ -42,6 +46,7 @@ const TeamCard = ({logo, name}: TeamCardType) => {
       marginBottom="l"
       marginHorizontal="s"
       padding="s"
+      position="relative"
       justifyContent="center"
       alignItems="center"
       backgroundColor="teamCard">
@@ -49,45 +54,73 @@ const TeamCard = ({logo, name}: TeamCardType) => {
       <Text color="body" fontSize={12} textAlign="center">
         {name}
       </Text>
+      {isSelected && (
+        <Box
+          borderColor="primary"
+          borderWidth={1}
+          borderRadius="l"
+          position="absolute"
+          top={0}
+          right={0}>
+          <Feather name="check" size={18} color={theme.colors.primary} />
+        </Box>
+      )}
     </Box>
   );
 };
 
 const numColumns = 3;
 
-const TeamList = () => {
-  return (
-    <Box paddingVertical="l" paddingHorizontal="m">
-      <Text color="black" fontSize={18} marginBottom="l" textAlign="center">
-        Select your Favourite team
-      </Text>
-      <FlatList
-        numColumns={3}
-        data={flatListDataFormate(TEAM_DATA, numColumns)}
-        showsHorizontalScrollIndicator={false}
-        keyExtractor={(item, index) => index.toString()}
-        renderItem={({item, index}) => {
-          return <TeamCard key={index} {...item} />;
-        }}
-      />
-    </Box>
-  );
-};
-
 const SelectTeam = ({
   navigation,
 }: StackNavigationProps<Routes, 'CreateProfile'>) => {
+  const [selectedIds, setSelectedIds] = useState<Array<number>>([]);
+
+  const selectTeam = (id: number) => {
+    let index = selectedIds.indexOf(id);
+    if (index === -1) {
+      setSelectedIds([...selectedIds, id]);
+    } else {
+      const updateIds = selectedIds.filter((selectedId) => selectedId !== id);
+      setSelectedIds([...updateIds]);
+    }
+  };
   return (
     <PrimaryWrapper>
       <Box flex={1}>
         <Header />
-        <TeamList />
-        <Box
-          flex={1}
-          paddingBottom="l"
-          justifyContent="flex-end"
-          paddingHorizontal="m">
-          <Button onPress={() => {}} label="Continue" />
+        <Box paddingVertical="l" paddingHorizontal="m">
+          <Text color="black" fontSize={18} marginBottom="l" textAlign="center">
+            Select your Favourite team
+          </Text>
+          <FlatList
+            numColumns={3}
+            data={flatListDataFormate(TEAM_DATA, numColumns)}
+            showsHorizontalScrollIndicator={false}
+            keyExtractor={(item, index) => index.toString()}
+            renderItem={({item, index}) => {
+              return (
+                <TouchableOpacity
+                  onPress={() => selectTeam(item.id)}
+                  activeOpacity={0.9}
+                  style={styles.teamCard}>
+                  <TeamCard
+                    isSelected={selectedIds.includes(item.id)}
+                    key={index}
+                    {...item}
+                  />
+                </TouchableOpacity>
+              );
+            }}
+          />
+        </Box>
+        <Box position="absolute" bottom={10} width="100%" paddingHorizontal="m">
+          <Button
+            disabled={selectedIds.length === 0}
+            variant={selectedIds.length === 0 ? 'disabled' : 'primary'}
+            onPress={() => {}}
+            label="Continue"
+          />
         </Box>
       </Box>
     </PrimaryWrapper>
@@ -107,6 +140,9 @@ const styles = StyleSheet.create({
     height: 65,
     marginBottom: 10,
     borderRadius: 40,
+  },
+  teamCard: {
+    flex: 1,
   },
 });
 

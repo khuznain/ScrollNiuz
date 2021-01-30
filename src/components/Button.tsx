@@ -1,29 +1,42 @@
 import React, {ReactNode} from 'react';
-import {StyleSheet} from 'react-native';
+import {StyleSheet, TouchableOpacity} from 'react-native';
 import {useTheme} from '@shopify/restyle';
-import {RectButton} from 'react-native-gesture-handler';
+// import {RectButton} from 'react-native-gesture-handler';
 
 import {Text, Theme} from './theme';
 
 export interface ButtonProps {
-  variant: 'default' | 'primary' | 'transparent';
+  variant: 'default' | 'primary' | 'disabled' | 'transparent';
   label?: string;
+  disabled: boolean | false;
   onPress: () => void;
   children?: ReactNode;
 }
 
-const Button = ({variant, onPress, label, children}: ButtonProps) => {
+const Button = ({variant, onPress, disabled, label, children}: ButtonProps) => {
   const theme = useTheme<Theme>();
 
-  const backgroundColor =
-    variant === 'primary'
-      ? theme.colors.primary
-      : variant === 'transparent'
-      ? 'transparent'
-      : theme.colors.body;
+  let backgroundColor;
+
+  switch (variant) {
+    case 'primary':
+      backgroundColor = theme.colors.primary;
+      break;
+    case 'disabled':
+      backgroundColor = theme.colors.bodyLight;
+      break;
+    case 'transparent':
+      backgroundColor = 'transparent';
+      break;
+    default:
+      backgroundColor = theme.colors.body;
+  }
 
   return (
-    <RectButton {...{onPress}} style={[styles.container, {backgroundColor}]}>
+    <TouchableOpacity
+      disabled={disabled}
+      {...{onPress}}
+      style={[styles.container, {backgroundColor}]}>
       {children ? (
         children
       ) : (
@@ -31,7 +44,7 @@ const Button = ({variant, onPress, label, children}: ButtonProps) => {
           {label}
         </Text>
       )}
-    </RectButton>
+    </TouchableOpacity>
   );
 };
 
