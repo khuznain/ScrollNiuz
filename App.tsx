@@ -12,7 +12,7 @@ const AuthenticationNavigator = () => {
   return (
     <AuthenticationStack.Navigator
       headerMode="none"
-      initialRouteName="SelectTeam"
+      initialRouteName="Login"
       screenOptions={{
         cardStyle: {
           backgroundColor: '#fff',

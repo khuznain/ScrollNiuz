@@ -85,6 +85,7 @@ const SelectTeam = ({
       setSelectedIds([...updateIds]);
     }
   };
+
   return (
     <PrimaryWrapper>
       <Box flex={1}>

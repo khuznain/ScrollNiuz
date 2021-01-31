@@ -35,6 +35,7 @@ const Button = ({variant, onPress, disabled, label, children}: ButtonProps) => {
   return (
     <TouchableOpacity
       disabled={disabled}
+      activeOpacity={0.9}
       {...{onPress}}
       style={[styles.container, {backgroundColor}]}>
       {children ? (
