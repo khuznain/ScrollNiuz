@@ -15,6 +15,7 @@ const theme = createTheme({
     shadow2: '#00000029',
     teamCard: '#FCFCFC',
     black: '#171717',
+    black2: '#3D3C3C',
     white: '#fff',
   },
   spacing: {

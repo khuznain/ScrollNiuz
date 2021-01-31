@@ -2,7 +2,14 @@ import * as React from 'react';
 import {ThemeProvider} from '@shopify/restyle';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import {Login, Register, CreateProfile, SelectTeam} from './src/authentication';
+import {
+  Login,
+  Register,
+  CreateProfile,
+  SelectTeam,
+  SelectLeague,
+  ChooseInterest,
+} from './src/authentication';
 import {theme} from './src/components';
 import {Routes} from './src/navigation';
 
@@ -12,7 +19,7 @@ const AuthenticationNavigator = () => {
   return (
     <AuthenticationStack.Navigator
       headerMode="none"
-      initialRouteName="Login"
+      initialRouteName="SelectLeague"
       screenOptions={{
         cardStyle: {
           backgroundColor: '#fff',
@@ -25,6 +32,14 @@ const AuthenticationNavigator = () => {
         component={CreateProfile}
       />
       <AuthenticationStack.Screen name="SelectTeam" component={SelectTeam} />
+      <AuthenticationStack.Screen
+        name="SelectLeague"
+        component={SelectLeague}
+      />
+      <AuthenticationStack.Screen
+        name="ChooseInterest"
+        component={ChooseInterest}
+      />
     </AuthenticationStack.Navigator>
   );
 };

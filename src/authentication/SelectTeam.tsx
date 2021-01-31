@@ -55,14 +55,8 @@ const TeamCard = ({logo, name, isSelected}: TeamCardType) => {
         {name}
       </Text>
       {isSelected && (
-        <Box
-          borderColor="primary"
-          borderWidth={1}
-          borderRadius="l"
-          position="absolute"
-          top={0}
-          right={0}>
-          <Feather name="check" size={18} color={theme.colors.primary} />
+        <Box position="absolute" top={0} right={0}>
+          <Feather name="check-circle" size={20} color={theme.colors.primary} />
         </Box>
       )}
     </Box>
@@ -119,7 +113,7 @@ const SelectTeam = ({
           <Button
             disabled={selectedIds.length === 0}
             variant={selectedIds.length === 0 ? 'disabled' : 'primary'}
-            onPress={() => {}}
+            onPress={() => navigation.navigate('SelectLeague')}
             label="Continue"
           />
         </Box>

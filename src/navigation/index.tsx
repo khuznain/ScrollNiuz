@@ -13,5 +13,7 @@ export type Routes = {
   Login: undefined;
   Register: undefined;
   CreateProfile: undefined;
+  ChooseInterest: undefined;
+  SelectLeague: undefined;
   SelectTeam: undefined;
 };
