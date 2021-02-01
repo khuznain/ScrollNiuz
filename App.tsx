@@ -9,6 +9,7 @@ import {
   SelectTeam,
   SelectLeague,
   ChooseInterest,
+  SelectChannel,
 } from './src/authentication';
 import {theme} from './src/components';
 import {Routes} from './src/navigation';
@@ -39,6 +40,10 @@ const AuthenticationNavigator = () => {
       <AuthenticationStack.Screen
         name="ChooseInterest"
         component={ChooseInterest}
+      />
+      <AuthenticationStack.Screen
+        name="SelectChannel"
+        component={SelectChannel}
       />
     </AuthenticationStack.Navigator>
   );

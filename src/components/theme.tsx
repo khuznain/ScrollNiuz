@@ -16,6 +16,8 @@ const theme = createTheme({
     teamCard: '#FCFCFC',
     black: '#171717',
     black2: '#3D3C3C',
+    black3: '#888787',
+    checked: '#3FECE0',
     white: '#fff',
   },
   spacing: {

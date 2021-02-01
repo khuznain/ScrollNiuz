@@ -16,4 +16,5 @@ export type Routes = {
   ChooseInterest: undefined;
   SelectLeague: undefined;
   SelectTeam: undefined;
+  SelectChannel: undefined;
 };

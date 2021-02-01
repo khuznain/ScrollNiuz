@@ -8,7 +8,7 @@ import {Text, Theme} from './theme';
 export interface ButtonProps {
   variant: 'default' | 'primary' | 'disabled' | 'transparent';
   label?: string;
-  disabled: boolean | false;
+  disabled?: boolean | false;
   onPress: () => void;
   children?: ReactNode;
 }

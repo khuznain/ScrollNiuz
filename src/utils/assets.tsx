@@ -17,3 +17,6 @@ export const ChooseInterest3 = require('../assets/interest-3.png');
 export const ChooseInterest4 = require('../assets/interest-4.png');
 export const ChooseInterest5 = require('../assets/interest-5.png');
 export const ChooseInterest6 = require('../assets/interest-6.png');
+
+// CNN Image
+export const CNN = require('../assets/cnn.png');

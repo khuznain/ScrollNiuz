@@ -40,7 +40,7 @@ const Item = ({logo, name, isSelected}: ItemType) => {
         <Feather
           name="check-circle"
           size={25}
-          color={isSelected ? '#3FECE0' : theme.colors.borderBlack}
+          color={isSelected ? theme.colors.checked : theme.colors.borderBlack}
         />
       </Box>
     </Box>
@@ -58,8 +58,6 @@ const SectionHeader = ({name, count}: SectionHeaderProps) => (
     flexDirection="row"
     justifyContent="space-between"
     paddingHorizontal="m"
-    // margin="s"
-    marginHorizontal="s"
     marginTop="m"
     paddingVertical="s">
     <Text color="black" opacity={0.6} fontSize={18}>

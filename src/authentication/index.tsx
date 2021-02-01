@@ -3,4 +3,5 @@ export {default as Register} from './Register';
 export {default as CreateProfile} from './CreateProfile';
 export {default as ChooseInterest} from './ChooseInterest';
 export {default as SelectLeague} from './SelectLeague';
+export {default as SelectChannel} from './SelectChannel';
 export {default as SelectTeam} from './SelectTeam';
