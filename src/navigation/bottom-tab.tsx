@@ -4,8 +4,8 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import MyTeam from '../dashboard/MyTeam';
 import {Box, Text} from '../components';
+import Home from '../dashboard/Home';
 
 const Tab = createBottomTabNavigator();
 
@@ -20,8 +20,6 @@ function MyTabBar({state, descriptors, navigation}) {
     <View style={{flexDirection: 'row'}}>
       {state.routes.map((route, index) => {
         const {options} = descriptors[route.key];
-
-        console.log('options ->', options);
 
         const label =
           options.tabBarLabel !== undefined
@@ -110,7 +108,7 @@ const TabNavigator = () => {
             ),
           }}
           name="My Team"
-          component={MyTeam}
+          component={Home}
         />
         <Tab.Screen
           options={{
@@ -119,7 +117,7 @@ const TabNavigator = () => {
             ),
           }}
           name="Interests"
-          component={MyTeam}
+          component={Home}
         />
         <Tab.Screen
           options={{
@@ -128,7 +126,7 @@ const TabNavigator = () => {
             ),
           }}
           name="Bookmarks"
-          component={MyTeam}
+          component={Home}
         />
         <Tab.Screen
           options={{
@@ -137,7 +135,7 @@ const TabNavigator = () => {
             ),
           }}
           name="Setting"
-          component={MyTeam}
+          component={Home}
         />
       </Tab.Navigator>
     </SafeAreaView>

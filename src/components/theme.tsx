@@ -15,10 +15,12 @@ const theme = createTheme({
     shadow2: '#00000029',
     teamCard: '#FCFCFC',
     black: '#171717',
+    sideMenu: '#000000',
     black2: '#3D3C3C',
     black3: '#888787',
     checked: '#3FECE0',
     white: '#fff',
+    yellow: '#FFCC00',
   },
   spacing: {
     s: 8,
