@@ -51,6 +51,12 @@ const theme = createTheme({
       fontSize: 14,
       color: 'body',
     },
+    menuItem: {
+      fontFamily: 'Poppins-Regular',
+      fontSize: 16,
+      color: 'sideMenu',
+      paddingLeft: 's',
+    },
   },
   breakpoints: {
     phone: 0,

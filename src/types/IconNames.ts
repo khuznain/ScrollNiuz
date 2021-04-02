@@ -9,6 +9,7 @@ export type IconNames =
   | 'user'
   | 'users'
   | 'menu'
+  | 'bell'
   | 'edit-3'
   | 'x'
   | 'map-pin'

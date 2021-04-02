@@ -8,18 +8,29 @@ import theme from './theme';
 interface IconProps {
   size?: 20 | 25 | 30 | 40 | 50 | 60 | 70 | 80;
   color: keyof typeof theme.colors;
-  onPress: () => void;
+  onPress?: () => void;
   name: IconNames;
+  touchLess?: boolean;
 }
 
-const Icon: React.SFC<IconProps> = ({size, name, color, onPress}) => (
-  <TouchableOpacity
-    activeOpacity={0.6}
-    hitSlop={{top: 50, left: 50, bottom: 50, right: 50}}
-    onPress={onPress}>
+const Icon: React.SFC<IconProps> = ({
+  size,
+  name,
+  color,
+  onPress,
+  touchLess,
+}) => {
+  return touchLess ? (
     <Feather name={name} color={theme.colors[color]} size={size} />
-  </TouchableOpacity>
-);
+  ) : (
+    <TouchableOpacity
+      activeOpacity={0.6}
+      hitSlop={{top: 50, left: 50, bottom: 50, right: 50}}
+      onPress={onPress}>
+      <Feather name={name} color={theme.colors[color]} size={size} />
+    </TouchableOpacity>
+  );
+};
 
 Icon.defaultProps = {
   color: 'white',

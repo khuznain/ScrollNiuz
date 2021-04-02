@@ -1,5 +1,8 @@
 import React from 'react';
-import {StyleSheet, ScrollView} from 'react-native';
+import {StyleSheet, TouchableOpacity} from 'react-native';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 //
 import Container from '../components/Container';
 import {Box, Text} from '../components';
@@ -12,22 +15,77 @@ function Drawer() {
         <Box
           justifyContent="center"
           alignItems="center"
-          width={80}
-          height={80}
+          width={90}
+          height={90}
           borderRadius="xl"
           bg="grey2">
           <Icon name="user" color="yellow" size={30} onPress={() => {}} />
         </Box>
       </Box>
 
-      <Box flex={1} bg="white">
-        <ScrollView
-          contentContainerStyle={styles.scrollView}
-          showsVerticalScrollIndicator={false}>
-          <Box>
-            <Text>khalid</Text>
+      <Box
+        flex={1}
+        justifyContent="space-between"
+        bg="white"
+        style={styles.scrollView}>
+        <Box>
+          <TouchableOpacity activeOpacity={0.6} style={styles.menuItem}>
+            <MaterialCommunityIcons
+              name="card-account-details-outline"
+              size={22}
+              color="#000"
+            />
+            <Box width={10} />
+            <Text variant="menuItem">My Profile</Text>
+          </TouchableOpacity>
+          <TouchableOpacity activeOpacity={0.6} style={styles.menuItem}>
+            <MaterialCommunityIcons
+              name="bell-outline"
+              size={22}
+              color="#000"
+            />
+            <Box width={10} />
+            <Text variant="menuItem">Notification</Text>
+          </TouchableOpacity>
+          <Box style={[styles.menuItem, {alignItems: 'flex-start'}]}>
+            <MaterialCommunityIcons
+              name="brightness-5"
+              size={22}
+              color="#000"
+            />
+            <Box width={10} />
+            <Box width="70%">
+              <Text variant="menuItem">Notification</Text>
+              <Box height={5} />
+              <Box
+                justifyContent="space-between"
+                alignItems="center"
+                flexDirection="row">
+                <Text fontSize={14} opacity={0.8} variant="menuItem">
+                  Day Mode
+                </Text>
+                <Ionicons name="sunny-outline" size={20} color="#000" />
+              </Box>
+              <Box height={5} />
+              <Box
+                justifyContent="space-between"
+                alignItems="center"
+                flexDirection="row">
+                <Text fontSize={14} opacity={0.8} variant="menuItem">
+                  Night Mode
+                </Text>
+                <Ionicons name="moon-outline" size={15} color="#000" />
+              </Box>
+            </Box>
           </Box>
-        </ScrollView>
+        </Box>
+        <Box>
+          <TouchableOpacity activeOpacity={0.6} style={styles.menuItem}>
+            <SimpleLineIcons name="logout" size={22} color="#000" />
+            <Box width={10} />
+            <Text variant="menuItem">Logout</Text>
+          </TouchableOpacity>
+        </Box>
       </Box>
     </Container>
   );
@@ -36,27 +94,12 @@ function Drawer() {
 const styles = StyleSheet.create({
   scrollView: {
     padding: 20,
+    paddingLeft: 30,
   },
-  thumbnail: {
-    width: '100%',
-    height: '100%',
-    justifyContent: 'center',
+  menuItem: {
+    flexDirection: 'row',
     alignItems: 'center',
-    zIndex: 0,
-  },
-  userImage: {
-    borderRadius: 50,
-    borderWidth: 4,
-    borderColor: '#fff',
-    width: 80,
-    height: 80,
-  },
-  overlay: {
-    ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'rgba(0,0,0,0.4)',
-    zIndex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    marginBottom: 20,
   },
 });
 
